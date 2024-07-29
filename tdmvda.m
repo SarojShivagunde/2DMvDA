@@ -2,7 +2,9 @@ function [M_ij,S_jr_2D,D_jr_2D] = tdmvda(c,v,s_r,s_c,tr_nij,AV)
 
 tr_ni = zeros(c,1);
 for i = 1 : c
-    tr_ni(i) = tr_nij(i) * v;
+    for j = 1 : v
+        tr_ni(i) = tr_ni(i) + tr_nij(i,j);
+    end
 end
 tr_n = sum(tr_ni);
 
